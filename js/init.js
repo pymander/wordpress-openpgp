@@ -40,7 +40,7 @@ function encryptTextarea(textareaId, publicKey) {
     jQuery(id).attr('data-encrypted', true);
 
     // If you don't want to make the textarea readonly after, comment this out.
-    jQuery(id).attr('readonly','readonly');
+    jQuery(id).prop('readonly',true);
 
     return true;
 }
