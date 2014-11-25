@@ -40,8 +40,8 @@ function openpgp_cryptbutton_header ()
 jQuery(document).ready(function() {
     jQuery(document).on('click', '.cryptbutton', function (event) {
         // Get textArea and public key info.
- var textareaId = jQuery(this).attr('data-textarea-id');
- var pubkeyUri = jQuery(this).attr('data-pubkey-uri');
+        var textareaId = jQuery(this).attr('data-textarea-id');
+        var pubkeyUri = jQuery(this).attr('data-pubkey-uri');
 
         publicKey = loadPublicKey(pubkeyUri);
         encryptTextarea(textareaId, publicKey);
