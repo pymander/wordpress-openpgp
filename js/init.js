@@ -14,7 +14,6 @@ function loadPublicKey(keyURI) {
         url: keyURI,
         success: function (data) {
             publicKey = openpgp.key.readArmored(data);
-            alert("PK: " + publicKey);
         },
         dataType: 'html',
         async: false
