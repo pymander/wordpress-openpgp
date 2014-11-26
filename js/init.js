@@ -25,9 +25,9 @@ function loadPublicKey(keyURI) {
 /** Encrypt a textarea. Pass in the id of a textarea and an
     openpgp.key object, maybe loaded by loadPublicKey() above. */
 function encryptTextarea(textareaId, publicKey) {
-    var plaintext = jQuery('#' + textareaId).val();
-    var encrypted = jQuery('#' + textareaId).attr('data-encrypted');
-    var id = '#' + textareaId;
+    var area = jQuery('#' + textareaId);
+    var plaintext = area.val();
+    var encrypted = area.attr('data-encrypted');
 
     if (encrypted) {
         alert("You've already encrypted this textarea.");
@@ -36,11 +36,11 @@ function encryptTextarea(textareaId, publicKey) {
 
     var pgpMessage = openpgp.encryptMessage(publicKey.keys, plaintext);
 
-    jQuery(id).val(pgpMessage);
-    jQuery(id).attr('data-encrypted', true);
+    area.val(pgpMessage);
+    area.attr('data-encrypted', true);
 
     // If you don't want to make the textarea readonly after, comment this out.
-    jQuery(id).prop('readonly',true);
+    area.prop('readonly',true);
 
     return true;
 }

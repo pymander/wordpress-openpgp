@@ -60,15 +60,23 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
         array(
             'textarea' => null,
             'keyurl' => null,
+            'keyid' => null,
             'class'  => null
         ),
         $atts
     );
 
+    $keyurl = $args['keyurl'];
+
+    // Easier is to just pass a media ID.
+    if (0 < (int)$args['keyid']) {
+        $keyurl = wp_get_attachment_url((int)$args['keyid']);
+    }
+
     return sprintf("<button type=\"button\" class=\"cryptbutton %s\" data-pubkey-uri=\"%s\" data-textarea-id=\"%s\">Encrypt</button>\n",
-           $args['class'],
-           $args['keyurl'],
-           $args['textarea']
+                   $args['class'],
+                   $keyurl,
+                   $args['textarea']
     );
 }
 
