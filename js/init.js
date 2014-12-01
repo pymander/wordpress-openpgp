@@ -36,7 +36,8 @@ function encryptTextarea(textareaId, publicKey) {
 
     var pgpMessage = openpgp.encryptMessage(publicKey.keys, plaintext);
 
-    area.val(pgpMessage);
+    // This initial newline makes sure the encrypted text starts on its own line.
+    area.val("\n" + pgpMessage);
     area.attr('data-encrypted', true);
 
     // If you don't want to make the textarea readonly after, comment this out.
