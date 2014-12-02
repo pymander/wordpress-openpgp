@@ -15,39 +15,7 @@ This plugin uses [OpenPGP.js](http://openpgpjs.org/) to provide public key encry
 textarea. It is most useful for any kind of text area that will be
 submitted via email or over an unsecured network connection.
 
-== Installation ==
-
-To install this plugin, follow these directions:
-
-1. Download the latest zip file from [the releases page](https://github.com/pymander/wordpress-openpgp/releases).
-1. Next, load up your WordPress blog’s dashboard, and go to **Plugins > Add New**.
-1. Upload the zip file.
-1. Click **Activate**.
-
-== Frequently Asked Questions ==
-
-= How do I get a public key? =
-
-OpenPGP for WordPress requires access to an OpenPGP public key in
-ASCII armored form. For more information on key generation and
-OpenPGP, I recommend the [Email Self-Defense website](https://emailselfdefense.fsf.org/en/), which has
-instructions for multiple operating systems.
-
-== Screenshots ==
-
-1. A textarea that has been encrypted, including a view of the "Encrypt" button.
-
-== Changelog ==
-
-= 1.0 =
-* First release.
-
-= 0.9 =
-* Development pre-release.
-
-== Upgrade Notice ==
-
-== Usage ==
+= Usage =
 This plugin provides a simple shortcode which you can add to your
 forms. To use the shortcode, you must first upload your ASCII-armored
 public key to your blog’s media section. Note that the public key must
@@ -82,16 +50,48 @@ I use this plugin with the [Jetpack for WordPress](http://jetpack.me/) contact f
 see an example of the output on my [Contact page](http://arnesonium.com/contact/). The WordPress code
 looks something like this:
 
-```
-[contact-form subject='ARNESONIUM CONTACT']
-[contact-field label='Name' type='name' required='1'/]
-[contact-field label='Email' type='email' required='1'/]
-[contact-field label='Phone' type='text'/]
-[contact-field label='Comment' type='textarea' required='1'/]
-[cryptbutton textarea="contact-form-comment" keyid=42]
-[/contact-form]
-```
+    [contact-form subject='ARNESONIUM CONTACT']
+    [contact-field label='Name' type='name' required='1'/]
+    [contact-field label='Email' type='email' required='1'/]
+    [contact-field label='Phone' type='text'/]
+    [contact-field label='Comment' type='textarea' required='1'/]
+    [cryptbutton keyid=42]
+    [/contact-form]
 
 Line 6 displays the cryptbutton usage. Note that I changed some
 elements of this example to make things clearer. You will need to play
 with layout and CSS to get things looking nice.
+
+
+== Installation ==
+
+To install this plugin, follow these directions:
+
+1. Download the latest zip file from [the releases page](https://github.com/pymander/wordpress-openpgp/releases).
+1. Next, load up your WordPress blog’s dashboard, and go to **Plugins > Add New**.
+1. Upload the zip file.
+1. Click **Activate**.
+
+== Frequently Asked Questions ==
+
+= How do I get a public key? =
+
+OpenPGP for WordPress requires access to an OpenPGP public key in
+ASCII armored form. For more information on key generation and
+OpenPGP, I recommend the [Email Self-Defense website](https://emailselfdefense.fsf.org/en/), which has
+instructions for multiple operating systems.
+
+== Screenshots ==
+
+1. A textarea that has been encrypted, including a view of the "Encrypt" button.
+
+== Changelog ==
+
+= 1.0 =
+* First release.
+
+= 0.9 =
+* Development pre-release.
+
+== Upgrade Notice ==
+
