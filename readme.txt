@@ -86,6 +86,12 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+= 1.2 =
+* Automatically find textarea for encryption.
+* Fixed possible bug with plaintext modification.
+
+= 1.1 =
+* Prepare everything for inclusion in WordPress Plugin repository.
 
 = 1.0 =
 * First release.
@@ -94,4 +100,7 @@ instructions for multiple operating systems.
 * Development pre-release.
 
 == Upgrade Notice ==
+
+There is no pressing need to upgrade to the latest version. If you're
+on at least version 1.0, everything should be just dandy for you.
 
