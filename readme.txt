@@ -6,6 +6,7 @@ Tested up to: 4.0.1
 Stable tag: v1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RXC68YPEATPUU
 
 OpenPGP public key encryption for any textarea with a shortcode button.
 
