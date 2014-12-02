@@ -31,8 +31,10 @@ defined('ABSPATH') or die("No script kiddies please!");
 // This isn't actually being called all the time. We don't need to load all of the OpenPGP.js library on every
 // page. It's too big for that.
 function openpgp_enqueue_scripts () {
-    wp_enqueue_script('openpgp', plugins_url('js/openpgp.min.js', __FILE__));
-    wp_enqueue_script('openpgp-init', plugins_url('js/init.js', __FILE__));
+    if (FALSE == wp_script_is('openpgp', 'enqueued')) {
+        wp_enqueue_script('openpgp', plugins_url('js/openpgp.min.js', __FILE__));
+        wp_enqueue_script('openpgp-init', plugins_url('js/init.js', __FILE__));
+    }
 }
 
 function openpgp_cryptbutton_header ()
@@ -58,12 +60,7 @@ EOT;
 
 function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
 {
-    // We load our JavaScript only if needed. It's a pretty hefty library.
-    // Possible bug with this method: https://core.trac.wordpress.org/ticket/11526
-    if (FALSE == wp_script_is('openpgp', 'enqueued')) {
-        wp_enqueue_script('openpgp', plugins_url('js/openpgp.min.js', __FILE__));
-        wp_enqueue_script('openpgp-init', plugins_url('js/init.js', __FILE__));
-    }
+    openpgp_enqueue_scripts();
 
     $args = shortcode_atts(
         array(
@@ -84,11 +81,11 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
         $keyurl = wp_get_attachment_url((int)$args['keyid']);
     }
 
-    return sprintf("<button type=\"button\" class=\"cryptbutton %s\" %sdata-pubkey-uri=\"%s\" data-textarea-id=\"%s\">%s</button>",
+    return sprintf("<button type=\"button\" id=\"cryptbutton\" class=\"cryptbutton %s\" %sdata-pubkey-uri=\"%s\"%s>%s</button>",
                    $args['class'],
                    (isset($args['style']) ? "style=\"" . $args['style'] . "\" " : ''),
                    $keyurl,
-                   $args['textarea'],
+                   (isset($args['textarea']) ?  "data-textarea-id=\"" . $args['textarea'] . "\"" : ''),
                    $args['text']
     );
 }
