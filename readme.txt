@@ -16,6 +16,8 @@ This plugin uses [OpenPGP.js](http://openpgpjs.org/) to provide public key encry
 textarea. It is most useful for any kind of text area that will be
 submitted via email or over an unsecured network connection.
 
+The GitHub repository for this plugin is located at https://github.com/pymander/wordpress-openpgp
+
 = Usage =
 This plugin provides a simple shortcode which you can add to your
 forms. To use the shortcode, you must first upload your ASCII-armored
