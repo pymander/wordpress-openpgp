@@ -92,6 +92,7 @@ instructions for multiple operating systems.
 = 1.2 =
 * Automatically find textarea for encryption.
 * Fixed possible bug with plaintext modification.
+* Use open and close tags for custom button text.
 
 = 1.1 =
 * Prepare everything for inclusion in WordPress Plugin repository.
