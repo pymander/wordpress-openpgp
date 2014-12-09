@@ -38,8 +38,8 @@ The URL for your ASCII-armored public key. Either this argument or
 keyid are required.
 
 **textarea**
-The HTML ID for the textarea element to be encrypted. This argument is
-required.
+The HTML ID of the textarea element to be encrypted. This argument is
+optional.
 
 **class**
 Optional. Specify additional CSS classes for the button element.
@@ -62,7 +62,7 @@ looks something like this:
 [contact-field label='Email' type='email' required='1'/]
 [contact-field label='Phone' type='text'/]
 [contact-field label='Comment' type='textarea' required='1'/]
-[cryptbutton textarea="contact-form-comment" keyid=42]
+[cryptbutton keyid=42]
 [/contact-form]
 ```
 
