@@ -81,12 +81,17 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
         $keyurl = wp_get_attachment_url((int)$args['keyid']);
     }
 
+    // Let's make sure we're using the right content.
+    if (null == $content) {
+        $content = $args['text'];
+    }
+
     return sprintf("<button type=\"button\" id=\"cryptbutton\" class=\"cryptbutton %s\" %sdata-pubkey-uri=\"%s\"%s>%s</button>",
                    $args['class'],
                    (isset($args['style']) ? "style=\"" . $args['style'] . "\" " : ''),
                    $keyurl,
                    (isset($args['textarea']) ?  "data-textarea-id=\"" . $args['textarea'] . "\"" : ''),
-                   $args['text']
+                   $content
     );
 }
 
