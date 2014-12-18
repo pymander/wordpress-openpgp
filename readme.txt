@@ -2,7 +2,7 @@
 Contributors: arnesonium
 Tags: forms, encryption, pgp, gnupg, openpgp
 Requires at least: 4.0
-Tested up to: 4.0.1
+Tested up to: 4.1
 Stable tag: v1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,16 +27,17 @@ reside on the same server as your blog.
 The `cryptbutton` shortcode takes the following arguments.
 
 **keyid**
-The media ID of your ASCII-armored public key. Either this or keyurl
+The media ID of your ASCII-armored public key. Either this or `keyurl`
 are required.
 
 **keyurl**
 The URL for your ASCII-armored public key. Either this argument or
-keyid are required.
+`keyid` are required.
 
-**textarea**
-The HTML ID for the textarea element to be encrypted. This argument is
-required.
+**textarea** 
+Optional. The HTML ID for the textarea element to be encrypted. When
+this is omitted, the plugin will try to find the correct textarea
+automatically.
 
 **class**
 Optional. Specify additional CSS classes for the button element.
@@ -45,7 +46,9 @@ Optional. Specify additional CSS classes for the button element.
 Optional. Specify additional CSS styles for the button element.
 
 **text**
-Optional. Specify the button text. This defaults to “Encrypt”.
+Optional. Specify the button text. This defaults to "Encrypt". You can
+also use the shortcode as an open/close tag, and the contents will be
+used as the button text.
 
 = Example =
 
@@ -58,7 +61,7 @@ looks something like this:
     [contact-field label='Email' type='email' required='1'/]
     [contact-field label='Phone' type='text'/]
     [contact-field label='Comment' type='textarea' required='1'/]
-    [cryptbutton keyid=42]
+    [cryptbutton keyid=42]Encrypt[/cryptbutton]
     [/contact-form]
 
 Line 6 displays the cryptbutton usage. Note that I changed some
