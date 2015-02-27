@@ -90,7 +90,7 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
                    $args['class'],
                    (isset($args['style']) ? "style=\"" . $args['style'] . "\" " : ''),
                    $keyurl,
-                   (isset($args['textarea']) ?  "data-textarea-id=\"" . $args['textarea'] . "\"" : ''),
+                   (isset($args['textarea']) ?  " data-textarea-id=\"" . $args['textarea'] . "\"" : ''),
                    $content
     );
 }
