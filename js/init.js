@@ -45,13 +45,17 @@ function encryptTextarea(textareaId, publicKey) {
     // Fetch plaintext.
     plaintext = area.val();
 
-    var pgpMessage = openpgp.encryptMessage(publicKey.keys, plaintext);
+    var pgpMessagePromise = openpgp.encryptMessage(publicKey.keys, plaintext);
 
-    // This initial newline makes sure the encrypted text starts on its own line.
-    area.val("\n" + pgpMessage);
-    area.attr('data-encrypted', true);
+    pgpMessagePromise.then(function (ctext) {
+        // This initial newline makes sure the encrypted text starts on its own line.
+        area.val("\n" + ctext);
+        area.attr('data-encrypted', true);
+    }, function (err) {
+        alert(err);
+    });
 
-    // If you want to make the textarea readonly after, uncomment this.
+    // If you want to make the textarea writeable after, uncomment this.
     //area.prop('readonly',false);
 
     return true;
