@@ -28,6 +28,12 @@ function encryptTextarea(textareaId, publicKey) {
     var area = jQuery('#' + textareaId);
     var plaintext;
 
+    // If the browser can't do OpenPGP.js, we need to alert the user.
+    if (!window.crypto.getRandomValues) {
+        alert("We're sorry, but your browser doesn't support OpenPGP.js.");
+        return false;
+    }
+
     // If we didn't get a textareaId passed to us, sleuth around.
     if (!textareaId) {
         area = jQuery('#cryptbutton').parents('form').find('textarea');
