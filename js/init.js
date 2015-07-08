@@ -34,10 +34,16 @@ function encryptTextarea(textareaId, publicKey) {
         return false;
     }
 
-    // If we didn't get a textareaId passed to us, sleuth around.
+    // If we didn't get a textareaId passed to us, find a suitable candidate and use that.
     if (!textareaId) {
         area = jQuery('#cryptbutton').parents('form').find('textarea');
-        alert("found area " + area);
+        //alert("found area " + area);
+    }
+
+    // Finally, if we don't have an encryptable area at this point, let's bug out.
+    if (!area) {
+        alert("Unable to find encryptable textarea.");
+        return false;
     }
 
     if (area.attr('data-encrypted')) {
