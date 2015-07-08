@@ -92,6 +92,10 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+= 1.3.1 =
+* Update to OpenPGP.js 1.2.0
+* Fix minor bugs
+
 = 1.3.0 =
 * Update to OpenPGP.js 1.0.1
 * Tested against WordPress 4.2.2
