@@ -103,9 +103,12 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+<<<<<<< baa1e4bc8fa9f7cec68fe80700ef7a377ec4a60e
 = 1.4.0 =
 * Add support for Contact Form 7
 
+=======
+>>>>>>> Move to OpenPGP.js v1.2.0
 = 1.3.1 =
 * Update to OpenPGP.js 1.2.0
 * Fix minor bugs
