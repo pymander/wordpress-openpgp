@@ -74,6 +74,30 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
         $atts
     );
 
+    return openpgp_cryptbutton_create($args, $content, $tag);
+}
+
+function openpgp_cryptbutton_wpcf7 ($tag) {
+	if (!is_array($tag)) return '';
+
+    openpgp_enqueue_scripts();
+
+    $tag = new WPCF7_Shortcode( $tag );
+
+    $args = array(
+        'textarea' => $tag->get_option('textarea', 'id', true),
+        'keyurl' => $tag->get_option('keyurl', '.*', true),
+        'keyid' => $tag->get_option('keyid', 'int', true),
+        'class' => $tag->get_class_option(),
+        'style' => $tag->get_option('style', 'class', true),
+        'text' => $tag->values[0]
+    );
+
+    return openpgp_cryptbutton_create ($args);
+}
+
+function openpgp_cryptbutton_create ($args, $content = null, $tag = null) {
+    
     $keyurl = $args['keyurl'];
 
     // Easier is to just pass a media ID.
@@ -99,3 +123,9 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
 //add_action('wp_enqueue_scripts', 'openpgp_enqueue_scripts');
 add_action('wp_head', 'openpgp_cryptbutton_header');
 add_shortcode('cryptbutton', 'openpgp_cryptbutton_shortcode');
+
+// If Contact Form 7 is installed, we can do this, too.
+add_action('wpcf7_init', function () {
+    wpcf7_add_shortcode('cryptbutton', 'openpgp_cryptbutton_wpcf7', false);
+});
+
