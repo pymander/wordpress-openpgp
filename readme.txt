@@ -1,9 +1,9 @@
 === OpenPGP Form Encryption for WordPress ===
 Contributors: arnesonium
-Tags: forms, encryption, pgp, gnupg, openpgp
+Tags: forms, encryption, pgp, gnupg, openpgp, contact form 7, contact form
 Requires at least: 4.0
 Tested up to: 4.4.1
-Stable tag: v1.3.1
+Stable tag: v1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://cash.me/$ErikLArneson
@@ -52,7 +52,7 @@ used as the button text.
 
 = Example =
 
-I use this plugin with the [Jetpack for WordPress](http://jetpack.me/) contact form. You can
+This example uses the [Jetpack for WordPress](http://jetpack.me/) contact form. You can
 see an example of the output on my [Contact page](http://arnesonium.com/contact/). The WordPress code
 looks something like this:
 
@@ -68,6 +68,17 @@ Line 6 displays the cryptbutton usage. Note that I changed some
 elements of this example to make things clearer. You will need to play
 with layout and CSS to get things looking nice.
 
+= Contact Form 7 =
+
+This plugin also adds a `cryptbutton` shortcode to
+[Contact Form 7](http://contactform7.com/). Shortcodes use a slightly
+different syntax with CF7. All of the options are still available, but
+the example above would be used in a form like this:
+
+    <p>
+    [cryptbutton keyid:42 "Encrypt"]
+    [submit "Send"]
+    </p>
 
 == Installation ==
 
@@ -92,6 +103,9 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+= 1.4.0 =
+* Add support for Contact Form 7
+
 = 1.3.1 =
 * Update to OpenPGP.js 1.2.0
 * Fix minor bugs

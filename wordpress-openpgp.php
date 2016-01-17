@@ -5,7 +5,7 @@
 /*
 Plugin Name: OpenPGP for Textareas
 Description: Provide encryption using OpenPGP.js for textareas via buttons and callbacks and such.
-Version: 1.3.1
+Version: 1.4.0
 Author: Erik L. Arneson
 Author URI: http://www.arnesonium.com/
 License: GPLv2 or later
