@@ -9,7 +9,7 @@
 function loadPublicKey(keyURI) {
   var response, publicKey;
 
-  // We need this to be an asynchronous call.
+  // We need this to be called synchronous.
   jQuery.ajax({
     url: keyURI,
     success: function (data) {
@@ -57,12 +57,19 @@ function encryptTextarea(textareaId, publicKey) {
   // Fetch plaintext.
   plaintext = area.val();
 
-  var pgpMessagePromise = openpgp.encryptMessage(publicKey.keys, plaintext);
+  // Init the worker with our calculated URI
+  openpgp.initWorker({ path: openpgpWorkerUri });
+  
+  var pgpMessagePromise = openpgp.encrypt({
+    data: plaintext,
+    publicKeys: publicKey.keys
+  });
 
   pgpMessagePromise.then(function (ctext) {
     // This initial newline makes sure the encrypted text starts on its own line.
-    area.val("\n" + ctext);
+    area.val("\n" + ctext.data);
     area.attr('data-encrypted', true);
+    //alert('Encrypted like a BOSS');
   }, function (err) {
     alert(err);
   });

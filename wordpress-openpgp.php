@@ -28,11 +28,13 @@ License: GPLv2 or later
 
 defined('ABSPATH') or die("No script kiddies please!");
 
+define('OPENPGP_VERSION', '2.6.1');
+
 // This isn't actually being called all the time. We don't need to load all of the OpenPGP.js library on every
 // page. It's too big for that.
 function openpgp_enqueue_scripts () {
     if (FALSE == wp_script_is('openpgp', 'enqueued')) {
-        wp_enqueue_script('openpgp', plugins_url('js/openpgp.2.3.5.min.js', __FILE__));
+        wp_enqueue_script('openpgp', plugins_url('js/openpgp.' . OPENPGP_VERSION . '.min.js', __FILE__));
         wp_enqueue_script('openpgp-init', plugins_url('js/init.js', __FILE__));
     }
 }
@@ -41,6 +43,7 @@ function openpgp_cryptbutton_header ()
 {
     $output = <<<EOT
 <script type="text/javascript">
+var openpgpWorkerUri = 'WORKER_URI';
 jQuery(document).ready(function() {
     jQuery(document).on('click', '.cryptbutton', function (event) {
         // Get textArea and public key info.
@@ -53,6 +56,8 @@ jQuery(document).ready(function() {
 });
 </script>
 EOT;
+
+    $output = str_replace('WORKER_URI', plugins_url('js/openpgp.worker.' . OPENPGP_VERSION . '.min.js', __FILE__), $output);
 
     echo $output;
 
@@ -82,7 +87,7 @@ function openpgp_cryptbutton_wpcf7 ($tag) {
 
     openpgp_enqueue_scripts();
 
-    $tag = new WPCF7_Shortcode( $tag );
+    //$tag = new WPCF7_Shortcode( $tag );
 
     $args = array(
         'textarea' => $tag->get_option('textarea', 'id', true),
@@ -126,6 +131,7 @@ add_shortcode('cryptbutton', 'openpgp_cryptbutton_shortcode');
 
 // If Contact Form 7 is installed, we can do this, too.
 add_action('wpcf7_init', function () {
-    wpcf7_add_shortcode('cryptbutton', 'openpgp_cryptbutton_wpcf7', false);
+    wpcf7_add_form_tag('cryptbutton', 'openpgp_cryptbutton_wpcf7');
+    //wpcf7_add_shortcode('cryptbutton', 'openpgp_cryptbutton_wpcf7', false);
 });
 
