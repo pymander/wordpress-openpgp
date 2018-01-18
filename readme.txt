@@ -2,8 +2,8 @@
 Contributors: arnesonium
 Tags: forms, encryption, pgp, gnupg, openpgp, contact form 7, contact form
 Requires at least: 4.0
-Tested up to: 4.4.1
-Stable tag: v1.4.0
+Tested up to: 4.9.1
+Stable tag: v1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://cash.me/$ErikLArneson
@@ -103,6 +103,10 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+= 1.5.0 =
+* Fixed support for newer version of Contact Form 7
+* Update to OpenPGP.js 2.6.1 with new API
+
 = 1.4.0 =
 * Add support for Contact Form 7
 
