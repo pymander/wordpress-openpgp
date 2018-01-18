@@ -78,7 +78,7 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
 }
 
 function openpgp_cryptbutton_wpcf7 ($tag) {
-	if (!is_array($tag)) return '';
+	#if (!is_array($tag)) return '';
 
     openpgp_enqueue_scripts();
 
