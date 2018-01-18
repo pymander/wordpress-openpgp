@@ -34,7 +34,7 @@ define('OPENPGP_VERSION', '2.6.1');
 // page. It's too big for that.
 function openpgp_enqueue_scripts () {
     if (FALSE == wp_script_is('openpgp', 'enqueued')) {
-        wp_enqueue_script('openpgp', plugins_url('js/openpgp.1.2.0.min.js', __FILE__));
+        wp_enqueue_script('openpgp', plugins_url('js/openpgp.' . OPENPGP_VERSION . '.min.js', __FILE__));
         wp_enqueue_script('openpgp-init', plugins_url('js/init.js', __FILE__));
     }
 }
@@ -83,8 +83,6 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
 }
 
 function openpgp_cryptbutton_wpcf7 ($tag) {
-	#if (!is_array($tag)) return '';
-
     openpgp_enqueue_scripts();
 
     //$tag = new WPCF7_Shortcode( $tag );
