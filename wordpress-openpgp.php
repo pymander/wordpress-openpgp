@@ -5,7 +5,7 @@
 /*
 Plugin Name: OpenPGP for Textareas
 Description: Provide encryption using OpenPGP.js for textareas via buttons and callbacks and such.
-Version: 1.5.0
+Version: 1.5.1
 Author: Erik L. Arneson
 Author URI: http://www.arnesonium.com/
 License: GPLv2 or later
@@ -73,7 +73,6 @@ function openpgp_cryptbutton_shortcode ($atts = array(), $content = null, $tag)
             'keyurl' => null,
             'keyid' => null,
             'class'  => null,
-            'style' => null,
             'text'  => 'Encrypt'
         ),
         $atts
@@ -92,7 +91,6 @@ function openpgp_cryptbutton_wpcf7 ($tag) {
         'keyurl' => $tag->get_option('keyurl', '.*', true),
         'keyid' => $tag->get_option('keyid', 'int', true),
         'class' => $tag->get_class_option(),
-        'style' => $tag->get_option('style', 'class', true),
         'text' => $tag->values[0]
     );
 
@@ -113,12 +111,11 @@ function openpgp_cryptbutton_create ($args, $content = null, $tag = null) {
         $content = $args['text'];
     }
 
-    return sprintf("<button type=\"button\" id=\"cryptbutton\" class=\"cryptbutton %s\" %sdata-pubkey-uri=\"%s\"%s>%s</button>",
-                   $args['class'],
-                   (isset($args['style']) ? "style=\"" . $args['style'] . "\" " : ''),
-                   $keyurl,
-                   (isset($args['textarea']) ?  " data-textarea-id=\"" . $args['textarea'] . "\"" : ''),
-                   $content
+    return sprintf("<button type=\"button\" id=\"cryptbutton\" class=\"cryptbutton %s\" data-pubkey-uri=\"%s\"%s>%s</button>",
+                   esc_attr($args['class']),
+                   esc_url($keyurl),
+                   (isset($args['textarea']) ?  " data-textarea-id=\"" . esc_attr($args['textarea']) . "\"" : ''),
+                   esc_html($content)
     );
 }
 

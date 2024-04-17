@@ -44,9 +44,6 @@ optional.
 **class**
 Optional. Specify additional CSS classes for the button element.
 
-**style**
-Optional. Specify additional CSS styles for the button element.
-
 **text**
 Optional. Specify the button text. This defaults to “Encrypt”.
 

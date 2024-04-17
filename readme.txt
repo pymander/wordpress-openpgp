@@ -3,7 +3,7 @@ Contributors: arnesonium
 Tags: forms, encryption, pgp, gnupg, openpgp, contact form 7, contact form
 Requires at least: 4.0
 Tested up to: 4.9.1
-Stable tag: v1.5.0
+Stable tag: v1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://cash.me/$ErikLArneson
@@ -41,9 +41,6 @@ automatically.
 
 **class**
 Optional. Specify additional CSS classes for the button element.
-
-**style**
-Optional. Specify additional CSS styles for the button element.
 
 **text**
 Optional. Specify the button text. This defaults to "Encrypt". You can
@@ -103,6 +100,10 @@ instructions for multiple operating systems.
 1. A textarea that has been encrypted, including a view of the "Encrypt" button.
 
 == Changelog ==
+= 1.5.1 =
+* Escaped outputs to avoid XSS vulnerabilities.
+* Removed 'style' option from the cryptbutton shortcode.
+
 = 1.5.0 =
 * Fixed support for newer version of Contact Form 7
 * Update to OpenPGP.js 2.6.1 with new API
